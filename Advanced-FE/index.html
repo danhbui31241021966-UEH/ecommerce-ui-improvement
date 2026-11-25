@@ -1,179 +1,134 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f6f8fd">
-    <meta name="description" content="Bài thực hành Advanced Front-End - Bùi Công Danh">
-    <title>Advanced Front-End · Bùi Công Danh</title>
-    <link rel="stylesheet" href="./css/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f7fc">
+<meta name="description" content="Website bài thực hành Advanced Front-End của Bùi Công Danh - 31241021966">
+<title>Advanced FE | Bùi Công Danh</title>
+<style>
+:root{
+  --ink:#172342;--muted:#667795;--blue:#315bd8;--bg:#f5f7fc;--line:#e2e8f3;
+  --pink:#df79a9;--mint:#18a98c;--white:#fff;--shadow:0 18px 48px rgba(29,51,94,.075)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:min(1320px,calc(100% - 64px));margin-inline:auto}
+.site-header{height:94px;background:rgba(255,255,255,.96);border-bottom:1px solid #e8edf6;display:flex;align-items:center;position:sticky;top:0;z-index:10}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:14px;font-weight:900;font-size:27px;letter-spacing:-1.2px;line-height:1}
+.brand-mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(140deg,#7889f4,#d879bd);display:grid;place-items:center;color:white;font-size:25px;box-shadow:0 7px 18px #8b91df40}
+.brand-name span{color:var(--pink)}
+.brand small{display:block;margin-top:7px;color:#68799b;font-size:10px;letter-spacing:1.5px;font-weight:800}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a{font-size:14px;font-weight:700;color:#435475;padding:12px 16px;border-radius:12px;transition:.2s}
+.nav a:hover,.nav a.active{background:#edf2ff;color:#2453c8}
+.hero{padding:88px 0 76px;background:radial-gradient(ellipse at 80% 10%,#e9edff 0,transparent 36%),linear-gradient(180deg,#f7f8fd,#f5f7fc)}
+.eyebrow{display:inline-flex;align-items:center;padding:8px 15px;border:1px solid #d9e3ff;background:#eef3ff;color:#31539e;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.3px}
+.hero h1{font-size:clamp(38px,5.4vw,68px);line-height:1.08;letter-spacing:-2.8px;margin:24px 0 18px;max-width:850px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p{font-size:18px;color:var(--muted);max-width:720px;margin:0 0 28px}
+.button{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:white;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 9px 20px #315bd82b;transition:.2s}
+.button:hover{transform:translateY(-2px);box-shadow:0 13px 24px #315bd83b}
+.section{padding:24px 0 76px}
+.section-head{margin-bottom:25px}
+.section-head h2{font-size:38px;line-height:1.2;letter-spacing:-1.2px;margin:18px 0 12px}
+.section-head p{font-size:18px;color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;min-height:350px;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s}
+.card:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(29,51,94,.12)}
+.card-icon{width:54px;height:54px;border-radius:15px;background:linear-gradient(135deg,#f0f2ff,#fcecf5);display:grid;place-items:center;font-size:25px;margin-bottom:24px}
+.tag{align-self:flex-start;background:#edf2ff;color:#405b9a;padding:5px 12px;border-radius:8px;font-size:13px;font-weight:800}
+.tag.pink{background:#fdebf3;color:#c84e89}.tag.mint{background:#e3f7f1;color:#079879}
+.card h3{font-size:22px;letter-spacing:-.5px;margin:16px 0 12px}
+.card p{font-size:16px;color:var(--muted);margin:0 0 22px}
+.card-link{margin-top:auto;color:#2855cf;font-size:14px;font-weight:850}
+.card-link:hover{text-decoration:underline}
+.profile{margin:0 0 76px;padding:26px 30px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.profile h3{font-size:22px;margin:0 0 3px}.profile p{margin:0;color:var(--muted)}
+.outline{background:#fff;color:var(--blue);border:1px solid #d8e2fb;box-shadow:none}
+.footer{background:#fff;border-top:1px solid var(--line);padding:24px 0;color:#71809b;font-size:13px}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer a{color:var(--blue);font-weight:700}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.nav a{padding:10px 9px;font-size:13px}}
+@media(max-width:650px){.container{width:min(100% - 36px,520px)}.site-header{height:auto;padding:15px 0}.header-inner{align-items:flex-start;flex-direction:column;gap:14px}.brand{font-size:23px}.nav{width:100%;overflow:auto}.nav a{white-space:nowrap}.hero{padding:62px 0 48px}.hero h1{letter-spacing:-1.5px}.hero p{font-size:16px}.section-head h2{font-size:30px}.section-head p{font-size:16px}.cards{grid-template-columns:1fr}.card{min-height:300px}.profile{align-items:flex-start;flex-direction:column}.footer-inner{flex-direction:column}}
+</style>
 </head>
-
 <body>
-<a href="#main" class="skip-link" style="position:absolute;left:-9999px">
-    Đến nội dung
-</a>
-
-<header class="header">
-    <div class="container">
-        <a class="brand" href="./index.html">
-            <span class="brand-bolt">✦</span>
-            <span>
-                DANH<span style="color:#da78a8">.LAB</span>
-                <small>WEB DEVELOPMENT STUDIO</small>
-            </span>
-        </a>
-
-        <nav class="nav" aria-label="Điều hướng">
-            <a href="./index.html">Trang chủ</a>
-            <a href="./../CSS-NangCao/index.html">CSS nâng cao</a>
-            <a href="./../Advanced-FE/index.html" aria-current="page">Advanced FE</a>
-            <a href="./../Nhom3-Game/index.html">Nhóm game</a>
-        </nav>
-    </div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="DANH.LAB - Trang chủ">
+      <span class="brand-mark">✦</span>
+      <span class="brand-name">DANH<span>.LAB</span><small>WEB DEVELOPMENT STUDIO</small></span>
+    </a>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#top">Trang chủ</a>
+      <a href="#projects">CSS nâng cao</a>
+      <a class="active" href="#projects">Advanced FE</a>
+      <a href="#profile">Nhóm game</a>
+    </nav>
+  </div>
 </header>
 
-<main id="main">
+<main id="top">
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">CHƯƠNG 6 · ADVANCED FRONT-END</span>
+      <h1>Giao diện thông minh.<br><em>Tương tác thật.</em></h1>
+      <p>Khám phá các bài thực hành phát triển giao diện web, thao tác DOM và xây dựng trò chơi tương tác bằng JavaScript.</p>
+      <a class="button" href="#projects">Khám phá 3 bài thực hành <span>→</span></a>
+    </div>
+  </section>
 
-    <section class="hero">
-        <div class="container">
-            <span class="pill">CHƯƠNG 6 · ADVANCED FRONT-END</span>
+  <section class="container section" id="projects">
+    <div class="section-head">
+      <span class="eyebrow">ĐỒ ÁN THỰC HÀNH</span>
+      <h2>Ba bài – ba tình huống</h2>
+      <p>Mỗi bài có mã nguồn độc lập, trang chạy và giải thích chức năng.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-icon">🛍️</div>
+        <span class="tag pink">Bài 01</span>
+        <h3>VoltLab – E-commerce</h3>
+        <p>Danh sách sản phẩm, lọc và sắp xếp, xem ảnh zoom, đánh giá sao, nhãn giảm giá, biểu đồ tồn kho và giỏ hàng.</p>
+        <a class="card-link" href="./shop.html">Khám phá cửa hàng ↗</a>
+      </article>
+      <article class="card">
+        <div class="card-icon">▤</div>
+        <span class="tag">Bài 02</span>
+        <h3>LMS – jQuery</h3>
+        <p>Truy xuất bài tập thứ 5, tổng hợp bài theo chủ đề và đọc hạn nộp từ cấu trúc trang Moodle.</p>
+        <a class="card-link" href="./LMS-JQuery/index.html">Xem phân tích LMS ↗</a>
+      </article>
+      <article class="card">
+        <div class="card-icon">🎮</div>
+        <span class="tag mint">Bài 03</span>
+        <h3>Flappy Bird</h3>
+        <p>Game canvas có điều khiển ArrowDown, điểm số, bốn cấp độ, vận tốc thay đổi và màn hình chiến thắng.</p>
+        <a class="card-link" href="./FlappyBird/index.html">Chơi Flappy Bird ↗</a>
+      </article>
+    </div>
+  </section>
 
-            <h1>
-                Giao diện thông minh.<br>
-                <em>Tương tác thật.</em>
-            </h1>
-
-            <p>
-                Ba bài thực hành kết nối giao diện thương mại điện tử,
-                jQuery thao tác DOM trên LMS và game Flappy Bird
-                sử dụng phím điều khiển.
-            </p>
-
-            <a class="btn" href="#projects">
-                Khám phá 3 bài thực hành →
-            </a>
-        </div>
-    </section>
-
-    <section class="container section" id="projects">
-
-        <div class="section-heading">
-            <div>
-                <span class="pill">ĐỒ ÁN THỰC HÀNH</span>
-                <h2 style="margin-top:12px">Ba bài – ba tình huống</h2>
-                <p>
-                    Mỗi bài có mã nguồn độc lập, trang chạy
-                    và giải thích chức năng.
-                </p>
-            </div>
-        </div>
-
-        <div class="grid cols-3">
-
-            <article class="card">
-                <div class="card-icon">🛍</div>
-                <span class="tag pink">Bài 01</span>
-
-                <h3 style="margin-top:14px">
-                    VoltLab – E-commerce
-                </h3>
-
-                <p>
-                    Danh sách sản phẩm, lọc và sắp xếp,
-                    xem ảnh zoom, đánh giá sao, nhãn giảm giá,
-                    biểu đồ tồn kho và giỏ hàng.
-                </p>
-
-                <a class="card-link" href="shop.html">
-                    Khám phá cửa hàng ↗
-                </a>
-            </article>
-
-            <article class="card">
-                <div class="card-icon">▤</div>
-                <span class="tag">Bài 02</span>
-
-                <h3 style="margin-top:14px">
-                    LMS – jQuery
-                </h3>
-
-                <p>
-                    Truy xuất bài tập thứ 5, tổng hợp bài theo
-                    chủ đề và đọc hạn nộp từ cấu trúc trang Moodle.
-                </p>
-
-                <a class="card-link" href="LMS-JQuery/index.html">
-                    Xem phân tích LMS ↗
-                </a>
-            </article>
-
-            <article class="card">
-                <div class="card-icon">🎮</div>
-                <span class="tag mint">Bài 03</span>
-
-                <h3 style="margin-top:14px">
-                    Flappy Bird
-                </h3>
-
-                <p>
-                    Game canvas có điều khiển ArrowDown,
-                    điểm số, bốn cấp độ, vận tốc thay đổi
-                    và màn hình chiến thắng.
-                </p>
-
-                <a class="card-link" href="FlappyBird/index.html">
-                    Chơi Flappy Bird ↗
-                </a>
-            </article>
-
-        </div>
-    </section>
-
-    <section class="container section">
-        <article class="card hero-row">
-
-            <div>
-                <h3 style="margin:0">
-                    Bùi Công Danh
-                </h3>
-
-                <p style="color:var(--muted);margin:5px 0">
-                    MSSV: 31241021966 · Lớp: 26C1INF50902702
-                </p>
-            </div>
-
-            <a class="btn btn-outline"
-               href="https://github.com/danhbui31241021966-UEH/BT-c-nh-n-bu-i-5"
-               target="_blank"
-               rel="noopener">
-                GitHub của em ↗
-            </a>
-
-        </article>
-    </section>
-
+  <section class="container" id="profile">
+    <div class="profile">
+      <div>
+        <h3>Bùi Công Danh</h3>
+        <p>MSSV: 31241021966 · Lớp: 26C1INF50902702</p>
+      </div>
+      <a class="button outline" href="https://github.com/danhbui31241021966-UEH" target="_blank" rel="noopener">GitHub của em ↗</a>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
-    <div class="container">
-
-        <span>
-            © 2026 Bùi Công Danh · Advanced Front-End
-        </span>
-
-        <span>
-            Phát triển ứng dụng TMĐT ·
-            <a href="https://github.com/danhbui31241021966-UEH/BT-c-nh-n-bu-i-5"
-               target="_blank"
-               rel="noopener">
-                GitHub ↗
-            </a>
-        </span>
-
-    </div>
+  <div class="container footer-inner">
+    <span>© 2026 Bùi Công Danh · Advanced Front-End</span>
+    <span>Phát triển ứng dụng TMĐT · <a href="https://github.com/danhbui31241021966-UEH" target="_blank" rel="noopener">GitHub ↗</a></span>
+  </div>
 </footer>
-
 </body>
 </html>
