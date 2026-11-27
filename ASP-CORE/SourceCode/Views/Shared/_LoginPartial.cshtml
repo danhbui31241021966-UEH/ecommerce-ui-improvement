@@ -1,4 +1,0 @@
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-<div class="links account">@if(SignInManager.IsSignedIn(User)){<a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a><form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index","Movies",new {area=""})" method="post"><button class="linkbtn">Đăng xuất</button></form>}else{<a asp-area="Identity" asp-page="/Account/Register">Đăng ký</a><a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>}
-@await Html.PartialAsync("/Views/Movies/Summary.cshtml", Context.Session.Get<HoaDon>("HoaDon"))</div>

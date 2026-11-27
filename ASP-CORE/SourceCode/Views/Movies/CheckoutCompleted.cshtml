@@ -1,2 +1,0 @@
-@model HoaDon
-@{ViewData["Title"]="Order Submitted";}<section class="panel success"><p class="eyebrow">ĐẶT HÀNG THÀNH CÔNG</p><h1>Thanks!</h1><p>Đơn hàng #@Model.MaHoaDon đã được ghi nhận.</p><h2>@Model.TongTien.ToString("N0") đ</h2>@if(ViewBag.EmailSent==true){<p>Đã gửi email xác nhận.</p>}else{<p>Đơn đã lưu; chưa gửi được email xác nhận.</p>}<a asp-action="Index" class="btn btn-primary">Về cửa hàng</a></section>

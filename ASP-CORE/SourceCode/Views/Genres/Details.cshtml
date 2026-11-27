@@ -1,2 +1,0 @@
-@model Genre
-@{ViewData["Title"]="Chi tiết thể loại";}<h1>@Model.Name</h1><p>Mã: @Model.ID · Số phim: @Model.Movies.Count</p><ul>@foreach(var m in Model.Movies){<li>@m.Title</li>}</ul><a asp-action="Index">Quay lại</a>
