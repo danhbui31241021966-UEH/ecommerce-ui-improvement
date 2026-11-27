@@ -1,8 +1,0 @@
-@model ShippingDetail
-@{ViewData["Title"]="Checkout";}<h1>Check out now</h1><p>Nhập thông tin giao hàng. Đây là bài thực hành, không thu tiền trực tuyến.</p><form asp-action="Checkout" method="post" class="panel formpanel"><div asp-validation-summary="All" class="text-danger"></div>
-<div class="mb-3"><label asp-for="Name"></label><input asp-for="Name" class="form-control"><span asp-validation-for="Name" class="text-danger"></span></div>
-<div class="mb-3"><label asp-for="Email"></label><input asp-for="Email" class="form-control"><span asp-validation-for="Email" class="text-danger"></span></div>
-<div class="mb-3"><label asp-for="Address"></label><input asp-for="Address" class="form-control"><span asp-validation-for="Address" class="text-danger"></span></div>
-<div class="mb-3"><label asp-for="Mobile"></label><input asp-for="Mobile" class="form-control"><span asp-validation-for="Mobile" class="text-danger"></span></div>
-<div class="mb-3"><label asp-for="ReleaseDate"></label><input asp-for="ReleaseDate" class="form-control"><span asp-validation-for="ReleaseDate" class="text-danger"></span></div>
-<button class="btn btn-primary">Hoàn thành</button> <a asp-action="CartView">Về giỏ hàng</a></form>@section Scripts {<partial name="_ValidationScriptsPartial" />}

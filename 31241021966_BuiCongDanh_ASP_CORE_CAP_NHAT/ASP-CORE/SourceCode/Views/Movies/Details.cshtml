@@ -1,2 +1,0 @@
-@model Movie
-@{ViewData["Title"]="Chi tiết phim";}<div class="detail"><img src="@Model.PicturePath" alt="@Model.Title"><div><p class="eyebrow">@Model.GenreObj?.Name</p><h1>@Model.Title</h1><p>@Model.Summary</p><p>★ @Model.Rated / 5 · @Model.ReleaseDate.ToString("dd/MM/yyyy")</p><h2>@Model.Price.ToString("N0") đ</h2><form asp-action="AddToCart" asp-route-id="@Model.ID" method="post"><button class="btn btn-primary">Mua</button></form><a asp-action="Index">Về cửa hàng</a></div></div>
