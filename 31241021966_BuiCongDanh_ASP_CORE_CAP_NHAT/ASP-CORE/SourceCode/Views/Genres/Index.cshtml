@@ -1,0 +1,2 @@
+@model IEnumerable<Genre>
+@{ViewData["Title"]="Thể loại";}<div class="sectionhead"><h1>Quản lý thể loại</h1><a asp-action="Create" class="btn btn-primary">+ Thêm thể loại</a></div><table class="table"><thead><tr><th>ID</th><th>Tên</th><th>Thao tác</th></tr></thead><tbody>@foreach(var g in Model){<tr><td>@g.ID</td><td>@g.Name</td><td><a asp-action="Details" asp-route-id="@g.ID">Xem</a> · <a asp-action="Edit" asp-route-id="@g.ID">Sửa</a> · <a asp-action="Delete" asp-route-id="@g.ID">Xóa</a></td></tr>}</tbody></table>
