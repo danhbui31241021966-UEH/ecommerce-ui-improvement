@@ -1,0 +1,2 @@
+@model HoaDon
+<a class="cartpill" asp-controller="Movies" asp-action="CartView" asp-area="">Giỏ hàng của bạn: @Model.ChiTietHoaDons.Sum(x=>x.SoLuong) SP · @Model.TongTien.ToString("N0") đ</a>
