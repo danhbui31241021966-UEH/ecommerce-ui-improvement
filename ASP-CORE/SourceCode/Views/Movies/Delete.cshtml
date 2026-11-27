@@ -1,0 +1,2 @@
+@model Movie
+@{ViewData["Title"]="Xóa phim";}<h1>Xóa phim</h1><div class="panel"><p>Bạn có chắc muốn xóa <strong>@Model.Title</strong>?</p><form asp-action="Delete" asp-route-id="@Model.ID" method="post"><button class="btn btn-danger">Xác nhận xóa</button> <a asp-action="Manage">Hủy</a></form></div>

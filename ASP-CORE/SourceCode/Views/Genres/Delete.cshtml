@@ -1,0 +1,2 @@
+@model Genre
+@{ViewData["Title"]="Xóa thể loại";}<h1>Xóa thể loại</h1><p>Bạn có chắc muốn xóa @Model.Name?</p><form asp-action="Delete" asp-route-id="@Model.ID" method="post"><button class="btn btn-danger">Xóa</button> <a asp-action="Index">Hủy</a></form>
